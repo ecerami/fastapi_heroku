@@ -12,3 +12,9 @@ Then, run via uvicorn:
 
   uvicorn slack:app --reload
 
+## To deploy to heroku
+
+  heroku login
+  heroku create
+  git push heroku main
+  heroku open
