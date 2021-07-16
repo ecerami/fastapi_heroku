@@ -3,3 +3,4 @@ uvicorn
 gunicorn
 uvloop
 httptools
+sqlalchemy
