@@ -4,3 +4,4 @@ gunicorn
 uvloop
 httptools
 sqlalchemy
+psycopg2
