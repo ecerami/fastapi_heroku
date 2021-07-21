@@ -5,7 +5,7 @@ from .database import Base
 
 
 class Note(Base):
-    __tablename__ = "notes"
+    __tablename__ = "note"
 
     id = Column(Integer, primary_key=True, index=True)
     pk = Column(Integer)
@@ -14,16 +14,14 @@ class Note(Base):
     anticipo = Column(Float)
     date = Column(String)
 
-    ventas = relationship("Venta", back_populates="note")
+    ventas = relationship("Venta")
 
 
 class Venta(Base):
-    __tablename__ = "ventas"
+    __tablename__ = "venta"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String)
     cantidad = Column(Float)
     total = Column(Float)
     note_id = Column(Integer, ForeignKey("note.id"))
-
-    note = relationship("Note", back_populates="ventas")

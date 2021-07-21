@@ -32,7 +32,7 @@ const App = () => {
     const addNota = async () => {
       try {
         const response = await axios.post(
-          "https://fathomless-atoll-57807.herokuapp.com/",
+          "https://fathomless-atoll-57807.herokuapp.com/note",
           {
             cliente: nombre,
             ventas,
