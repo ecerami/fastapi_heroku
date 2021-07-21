@@ -40,18 +40,17 @@ const App = () => {
 
   const [numberTicket, setnumberTicket] = useState(0);
 
-  useEffect(() => {
-    console.log("get last ticket");
-    setnumberTicket(1);
-  }, []);
-
   return (
     <Container>
       <h3>Crear nueva nota</h3>
       <Row>
-        <Col md={2}>Nota #{numberTicket}</Col>
         <Col>
-          <SearchClient nombre={nombre} setNombre={setNombre} />
+          <SearchClient
+            nombre={nombre}
+            setNombre={setNombre}
+            setnumber={setnumberTicket}
+            number={numberTicket}
+          />
         </Col>
       </Row>
       <Row>
