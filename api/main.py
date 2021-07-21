@@ -59,5 +59,12 @@ def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
     """create note"""
     return note
 
+
+@app.get('/note/last')
+def create_note(db: Session = Depends(get_db)):
+    """get last id note"""
+    return 1
+
+
 # TODO:
 # download products

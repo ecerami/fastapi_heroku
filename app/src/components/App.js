@@ -5,6 +5,7 @@ import { SearchProduct } from "./SearchProduct";
 import { TableProducts } from "./TableProducts";
 import { FormPay } from "./FormPay";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const App = () => {
   const [nombre, setNombre] = useState("");
@@ -30,11 +31,25 @@ const App = () => {
     console.log(nombre, ventas, total, anticipo);
   };
 
+  const handleCancel = () => {
+    setVentas([]);
+    setAnticipo(0);
+    setTotal(0);
+    setNombre("");
+  };
+
+  const [numberTicket, setnumberTicket] = useState(0);
+
+  useEffect(() => {
+    console.log("get last ticket");
+    setnumberTicket(1);
+  }, []);
+
   return (
     <Container>
       <h3>Crear nueva nota</h3>
       <Row>
-        <Col md={2}>Nota #01</Col>
+        <Col md={2}>Nota #{numberTicket}</Col>
         <Col>
           <SearchClient nombre={nombre} setNombre={setNombre} />
         </Col>
@@ -58,6 +73,7 @@ const App = () => {
             anticipo={anticipo}
             setAnticipo={setAnticipo}
             handleSave={handleSave}
+            handleCancel={handleCancel}
           />
         </Col>
       </Row>

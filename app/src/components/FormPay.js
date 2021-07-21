@@ -1,7 +1,13 @@
 import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 
-export const FormPay = ({ total, anticipo, setAnticipo, handleSave }) => {
+export const FormPay = ({
+  total,
+  anticipo,
+  setAnticipo,
+  handleSave,
+  handleCancel,
+}) => {
   return (
     <Form>
       <Form.Row>
@@ -22,6 +28,9 @@ export const FormPay = ({ total, anticipo, setAnticipo, handleSave }) => {
 
       <Button as={Col} variant="success" type="submit" onClick={handleSave}>
         Cobrar
+      </Button>
+      <Button as={Col} variant="danger" type="submit" onClick={handleCancel}>
+        Cancelar
       </Button>
     </Form>
   );
