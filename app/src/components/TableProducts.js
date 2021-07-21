@@ -9,6 +9,7 @@ export const TableProducts = ({ ventas }) => {
         <tr>
           <th>Nombre</th>
           <th>Cantidad</th>
+          <th>Precio unitario</th>
           <th>total</th>
         </tr>
       </thead>
@@ -19,6 +20,7 @@ export const TableProducts = ({ ventas }) => {
               <td>{venta.nombre}</td>
               <td>{venta.cantidad}</td>
               <td>${venta.total}</td>
+              <td>${venta.total * venta.total}</td>
             </tr>
           ))}
       </tbody>

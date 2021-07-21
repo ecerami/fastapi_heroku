@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 
-export const SearchProduct = ({ onSave }) => {
+export const SearchProduct = ({ handleAddVenta }) => {
   const [nombre, setNombre] = useState("");
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
 
   const handleSubmit = () => {
     if (nombre && cantidad && total) {
-      onSave(nombre, cantidad, total);
+      handleAddVenta(nombre, cantidad, total);
+      setNombre("");
+      setCantidad(0);
+      setTotal(0);
     }
   };
 
@@ -36,7 +39,7 @@ export const SearchProduct = ({ onSave }) => {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>total</Form.Label>
+          <Form.Label>precio</Form.Label>
           <Form.Control
             type="number"
             min="1"

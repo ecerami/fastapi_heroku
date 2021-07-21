@@ -5,22 +5,17 @@ export const FormPay = ({ total, anticipo, setAnticipo, handleSave }) => {
   return (
     <Form>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col}>
           <Form.Label>Total:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="0"
-            disabled
-            value={420 + 108}
-          />
+          <Form.Control type="number" readOnly value={total} />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPassword">
+        <Form.Group as={Col}>
           <Form.Label>Anticipo</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="0"
-            onSave={(e) => setAnticipo(e.target.value)}
+            type="number"
+            onChange={(e) => setAnticipo(e.target.value)}
+            value={anticipo}
           />
         </Form.Group>
       </Form.Row>

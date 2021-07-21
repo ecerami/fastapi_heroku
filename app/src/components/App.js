@@ -18,7 +18,10 @@ const App = () => {
 
   useEffect(() => {
     if (ventas) {
-      const newTotal = ventas.reduce((acc, curr) => acc + curr.total, 0);
+      const newTotal = ventas.reduce(
+        (acc, curr) => acc + parseFloat(curr.total) * parseFloat(curr.cantidad),
+        0
+      );
       setTotal(newTotal);
     }
   }, [ventas]);
@@ -39,7 +42,7 @@ const App = () => {
       <Row>
         <Col>
           <hr />
-          <SearchProduct onSave={handleAddVenta} />
+          <SearchProduct handleAddVenta={handleAddVenta} />
         </Col>
       </Row>
       <Row>
