@@ -32,6 +32,7 @@ def get_db():
     finally:
         db.close()
 
+
 @app.get('/')
 def main():
     return {"info": "hola soy una api"}
