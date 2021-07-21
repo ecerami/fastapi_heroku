@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 
 export const FormPay = ({
@@ -8,6 +8,16 @@ export const FormPay = ({
   handleSave,
   handleCancel,
 }) => {
+  const [pendiente, setPendiente] = useState(0);
+
+  const handleAnticipo = (e) => {
+    const value = e.target.value;
+    if (total >= value) {
+      setAnticipo(value);
+      setPendiente(total - value);
+    }
+  };
+
   return (
     <Form>
       <Form.Row>
@@ -20,9 +30,13 @@ export const FormPay = ({
           <Form.Label>Anticipo</Form.Label>
           <Form.Control
             type="number"
-            onChange={(e) => setAnticipo(e.target.value)}
+            onChange={handleAnticipo}
             value={anticipo}
           />
+        </Form.Group>
+        <Form.Group as={Col}>
+          <Form.Label>Pendiente:</Form.Label>
+          <Form.Control type="number" readOnly value={pendiente} />
         </Form.Group>
       </Form.Row>
 

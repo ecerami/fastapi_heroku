@@ -9,7 +9,6 @@ export const SearchClient = ({ nombre, setNombre, setNumber, number }) => {
           <Form.Label>Nombre del cliente:</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Lona impresa"
             onChange={(e) => setNombre(e.target.value)}
             value={nombre}
           />

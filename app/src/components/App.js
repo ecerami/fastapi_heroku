@@ -29,17 +29,17 @@ const App = () => {
   }, [ventas]);
 
   const handleSave = () => {
-    console.log(nombre, ventas, total, anticipo);
     const addNota = async () => {
       try {
         const response = await axios.post("http://localhost:8000/note", {
-          nombre,
+          cliente: nombre,
           ventas,
           total,
           anticipo,
           pk: numberTicket,
         });
-        console.log(response);
+        window.alert(`Nota ${response.data.pk}: Guardada`);
+        handleCancel();
       } catch (e) {
         console.log(e);
       }
@@ -52,6 +52,7 @@ const App = () => {
     setAnticipo(0);
     setTotal(0);
     setNombre("");
+    setnumberTicket(0);
   };
 
   return (
