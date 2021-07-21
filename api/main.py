@@ -32,6 +32,10 @@ def get_db():
     finally:
         db.close()
 
+@app.get('/')
+def main():
+    return {"info": "hola soy una api"}
+
 
 @app.post('/note', response_model=schemas.Note)
 def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):

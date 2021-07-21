@@ -31,13 +31,16 @@ const App = () => {
   const handleSave = () => {
     const addNota = async () => {
       try {
-        const response = await axios.post("http://localhost:8000/note", {
-          cliente: nombre,
-          ventas,
-          total,
-          anticipo,
-          pk: numberTicket,
-        });
+        const response = await axios.post(
+          "https://fathomless-atoll-57807.herokuapp.com/",
+          {
+            cliente: nombre,
+            ventas,
+            total,
+            anticipo,
+            pk: numberTicket,
+          }
+        );
         window.alert(`Nota ${response.data.pk}: Guardada`);
         handleCancel();
       } catch (e) {
