@@ -9,7 +9,7 @@ class VentaBase(BaseModel):
 
 
 class VentaCreate(VentaBase):
-    product_id: int
+    nombre: str
 
 
 class Venta(VentaBase):
@@ -22,16 +22,18 @@ class Venta(VentaBase):
 
 
 class NoteBase(BaseModel):
-    date: str
     total: float
     anticipo: float
 
 
 class NoteCreate(NoteBase):
+    pk: int
+    nombre: str
     ventas: List[VentaCreate]
 
 
 class Note(NoteBase):
+    date: str
     id: int
     client_id: int
     ventas: List[Venta] = []

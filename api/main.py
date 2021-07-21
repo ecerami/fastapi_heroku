@@ -1,6 +1,7 @@
 from typing import List
 
 from fastapi import Body, Depends, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -10,6 +11,17 @@ from .database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 # Dependency
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db():
@@ -57,14 +69,5 @@ def create_client(client: schemas.ClientBase, db: Session = Depends(get_db)):
 @app.post('/note', response_model=schemas.NoteCreate)
 def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
     """create note"""
+    __import__('ipdb').set_trace()
     return note
-
-
-@app.get('/note/last')
-def create_note(db: Session = Depends(get_db)):
-    """get last id note"""
-    return 1
-
-
-# TODO:
-# download products

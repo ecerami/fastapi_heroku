@@ -20,7 +20,7 @@ export const TableProducts = ({ ventas }) => {
               <td>{venta.nombre}</td>
               <td>{venta.cantidad}</td>
               <td>${venta.total}</td>
-              <td>${venta.total * venta.total}</td>
+              <td>${venta.cantidad * venta.total}</td>
             </tr>
           ))}
       </tbody>

@@ -12,6 +12,7 @@ const App = () => {
   const [ventas, setVentas] = useState([]);
   const [total, setTotal] = useState(0);
   const [anticipo, setAnticipo] = useState(0);
+  const [numberTicket, setnumberTicket] = useState(0);
 
   const handleAddVenta = (nombre, cantidad, total) => {
     setVentas([...ventas, { nombre, cantidad, total }]);
@@ -29,6 +30,21 @@ const App = () => {
 
   const handleSave = () => {
     console.log(nombre, ventas, total, anticipo);
+    const addNota = async () => {
+      try {
+        const response = await axios.post("http://localhost:8000/note", {
+          nombre,
+          ventas,
+          total,
+          anticipo,
+          pk: numberTicket,
+        });
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    addNota();
   };
 
   const handleCancel = () => {
@@ -38,8 +54,6 @@ const App = () => {
     setNombre("");
   };
 
-  const [numberTicket, setnumberTicket] = useState(0);
-
   return (
     <Container>
       <h3>Crear nueva nota</h3>
@@ -48,7 +62,7 @@ const App = () => {
           <SearchClient
             nombre={nombre}
             setNombre={setNombre}
-            setnumber={setnumberTicket}
+            setNumber={setnumberTicket}
             number={numberTicket}
           />
         </Col>
