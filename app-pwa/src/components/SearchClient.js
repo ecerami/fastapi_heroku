@@ -5,7 +5,7 @@ export const SearchClient = ({ nombre, setNombre, setNumber, number }) => {
   return (
     <Form>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col}>
           <Form.Label>Nombre del cliente:</Form.Label>
           <Form.Control
             type="text"
@@ -13,7 +13,7 @@ export const SearchClient = ({ nombre, setNombre, setNumber, number }) => {
             value={nombre}
           />
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridPassword">
+        <Form.Group as={Col}>
           <Form.Label>nota</Form.Label>
           <Form.Control
             type="number"

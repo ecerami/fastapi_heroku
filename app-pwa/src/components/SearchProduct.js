@@ -18,7 +18,7 @@ export const SearchProduct = ({ handleAddVenta }) => {
   return (
     <Form>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col}>
           <Form.Label>Nombre de producto:</Form.Label>
           <Form.Control
             type="text"
@@ -27,7 +27,7 @@ export const SearchProduct = ({ handleAddVenta }) => {
             value={nombre}
           />
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridPassword">
+        <Form.Group as={Col}>
           <Form.Label>cantidad(m2/pz)</Form.Label>
           <Form.Control
             type="number"
@@ -38,7 +38,7 @@ export const SearchProduct = ({ handleAddVenta }) => {
           />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPassword">
+        <Form.Group as={Col}>
           <Form.Label>precio</Form.Label>
           <Form.Control
             type="number"
