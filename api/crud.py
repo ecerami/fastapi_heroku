@@ -36,6 +36,13 @@ from . import models, schemas
 #     return db_client
 
 
+def get_notes(fecha: str, db: Session):
+    query = select(models.Note).where(models.Note.date.like(f'%{fecha}%'))
+    notes = db.execute(query).all()
+    result = list(zip(*notes))[0]
+    return result
+
+
 def create_note(db: Session, note: schemas.NoteBase):
     db_note = models.Note(pk=note.pk, cliente=note.cliente,
                           total=note.total, anticipo=note.anticipo,

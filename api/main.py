@@ -1,4 +1,5 @@
-from typing import List
+from datetime import date
+from typing import List, Tuple
 
 from fastapi import Body, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,6 +37,12 @@ def get_db():
 @app.get('/')
 def main():
     return {"info": "hola soy una api"}
+
+
+@app.get('/note', response_model=List[schemas.Note])
+def get_notes(fecha: str, db: Session = Depends(get_db)):
+    notes = crud.get_notes(fecha, db)
+    return notes
 
 
 @app.post('/note', response_model=schemas.Note)
