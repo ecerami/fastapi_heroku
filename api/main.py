@@ -1,9 +1,5 @@
 from datetime import date
-<<<<<<< HEAD
 from typing import List
-=======
-from typing import List, Tuple
->>>>>>> 2d27b56719f080b5fc46b7340bc5ce4e2b767ed3
 
 from fastapi import Body, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
