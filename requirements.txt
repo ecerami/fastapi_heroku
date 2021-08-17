@@ -5,4 +5,4 @@ uvloop
 httptools
 sqlalchemy
 psycopg2-binary
-dotenv
+python-dotenv
