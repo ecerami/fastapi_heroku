@@ -7,7 +7,7 @@ import { FormPay } from "./FormPay";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const App = () => {
+const CreateNote = () => {
   const [nombre, setNombre] = useState("");
   const [ventas, setVentas] = useState([]);
   const [total, setTotal] = useState(0);
@@ -98,4 +98,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default CreateNote;
