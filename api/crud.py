@@ -36,6 +36,12 @@ from . import models, schemas
 #     return db_client
 
 
+def get_notes(db: Session, fecha: date):
+    query = select(models.Note)
+    notes = db.execute(query).all()
+    __import__('ipdb').set_trace()
+
+
 def create_note(db: Session, note: schemas.NoteBase):
     db_note = models.Note(pk=note.pk, cliente=note.cliente,
                           total=note.total, anticipo=note.anticipo,

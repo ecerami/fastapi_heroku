@@ -1,3 +1,4 @@
+from datetime import date
 from typing import List
 
 from fastapi import Body, Depends, FastAPI
@@ -36,6 +37,13 @@ def get_db():
 @app.get('/')
 def main():
     return {"info": "hola soy una api"}
+
+
+@app.get('/note')
+def list_note(fecha: date, db: Session = Depends(get_db)):
+    notes = crud.get_notes(db, fecha)
+    __import__('ipdb').set_trace()
+    return ['nota', 'nota']
 
 
 @app.post('/note', response_model=schemas.Note)
