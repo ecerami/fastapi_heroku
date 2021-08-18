@@ -39,7 +39,7 @@ from . import models, schemas
 def get_notes(fecha: str, db: Session):
     query = select(models.Note).where(models.Note.date.like(f'%{fecha}%'))
     notes = db.execute(query).all()
-    result = list(zip(*notes))[0]
+    result = list(zip(*notes))
     return result
 
 

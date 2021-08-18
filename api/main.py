@@ -1,7 +1,6 @@
 from datetime import date
 from typing import List
-
-from fastapi import Body, Depends, FastAPI
+from fastapi import Body, Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -11,11 +10,6 @@ from .database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
-
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-]
 
 app.add_middleware(
     CORSMiddleware,
@@ -42,7 +36,9 @@ def main():
 @app.get('/note', response_model=List[schemas.Note])
 def get_notes(fecha: str, db: Session = Depends(get_db)):
     notes = crud.get_notes(fecha, db)
-    return notes
+    if len(notes) < 1:
+        raise HTTPException(status_code=404, detail="Items not found")
+    return notes[0]
 
 
 @app.post('/note', response_model=schemas.Note)
