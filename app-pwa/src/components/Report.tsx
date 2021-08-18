@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export const Report = () => {
-    const d = new Date();
-    const [fecha, setFecha] = useState(
-        `${d.getFullYear()}-${
-            d.getMonth() > 9 ? d.getMonth() : "0" + d.getMonth()
-        }-${d.getDate()}`
-    );
-    const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFecha(e.target.value);
-    };
+type ReportParams = {
+    fecha: string;
+};
 
-    const [reports, setReports] = useState([])
+export const Report = () => {
+    const { fecha } = useParams<ReportParams>();
+
+    const [reports, setReports] = useState([]);
+    console.log(reports);
     useEffect(() => {
         const getNotes = async () => {
             try {
                 const response = await axios.get(
                     `https://fathomless-atoll-57807.herokuapp.com/note?fecha=${fecha}`
                 );
-                setReports(response.data)
+                setReports(response.data);
             } catch (e) {
                 console.log(e);
             }
@@ -29,19 +27,11 @@ export const Report = () => {
 
     return (
         <>
-            <input
-                type="date"
-                name="fecha"
-                value={fecha}
-                onChange={handleDate}
-            />
-            <br />
-            
+            {reports && reports.map((report) => <>#hola</>)}
             #1 juan $140
             <ul>
                 <li>2mt lona $70</li>
             </ul>
-
         </>
     );
 };
