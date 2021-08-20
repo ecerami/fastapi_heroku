@@ -2,7 +2,7 @@ import React from 'react'
 import CreateNote from './CreateNote'
 import {Report} from './Report'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
