@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import or_, select
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from . import models, schemas
@@ -44,13 +44,12 @@ def get_notes(fecha: str, db: Session):
 
 
 def create_note(db: Session, note: schemas.NoteBase):
-    db_note = models.Note(pk=note.pk, cliente=note.cliente,
+    db_note = models.Note(cliente=note.cliente,
                           total=note.total, anticipo=note.anticipo,
                           date=date.today())
     db.add(db_note)
     db.commit()
     db.refresh(db_note)
-    db_ventas = []
     for venta in note.ventas:
         db_venta = models.Venta(
             nombre=venta.nombre, cantidad=venta.cantidad,

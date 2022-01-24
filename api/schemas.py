@@ -1,10 +1,16 @@
-from typing import List, Optional
+from datetime import date
+from typing import List
 
 from pydantic import BaseModel
 
 
-class VentaBase(BaseModel):
+class ProductBase(BaseModel):
     nombre: str
+    categoria: str
+    precio: float
+
+
+class VentaBase(BaseModel):
     cantidad: float
     total: float
 
@@ -12,16 +18,40 @@ class VentaBase(BaseModel):
 class Venta(VentaBase):
     id: int
     note_id: int
+    product_id: int
+
+    class Config:
+        orm_mode = True
+
+
+class CompraBase(BaseModel):
+    cantidad: float
+    total: float
+    factura: str
+
+
+class Compra(VentaBase):
+    id: int
+    product_id: int
+
+    class Config:
+        orm_mode = True
+
+
+class Product(ProductBase):
+    id: int
+    ventas: List[Venta] = []
+    compras: List[Compra] = []
 
     class Config:
         orm_mode = True
 
 
 class NoteBase(BaseModel):
-    pk: int
     cliente: str
     total: float
     anticipo: float
+    date: date
 
 
 class NoteCreate(NoteBase):
@@ -30,7 +60,6 @@ class NoteCreate(NoteBase):
 
 class Note(NoteBase):
     id: int
-    date: str
     ventas: List[Venta] = []
 
     class Config:

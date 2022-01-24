@@ -1,29 +1,25 @@
 import React from "react";
-import { Form, Col } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
 
-export const SearchClient = ({ nombre, setNombre, setNumber, number }) => {
+export const SearchClient = ({ nombre, setNombre, setFecha, fecha }) => {
   return (
     <Form>
-      <Form.Row>
-        <Form.Group as={Col}>
+      <Row>
+        <Col>
           <Form.Label>Nombre del cliente:</Form.Label>
           <Form.Control
             type="text"
             onChange={(e) => setNombre(e.target.value)}
             value={nombre}
           />
-        </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>nota</Form.Label>
-          <Form.Control
-            type="number"
-            min="1"
-            step="any"
-            onChange={(e) => setNumber(e.target.value)}
-            value={number}
-          />
-        </Form.Group>
-      </Form.Row>
+        </Col>
+        <Col md={4}>
+          <Form.Label>Fecha</Form.Label>
+          <Datetime value={fecha} onChange={(date) => setFecha(date)} />
+        </Col>
+      </Row>
     </Form>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Col, Button, Row } from "react-bootstrap";
 
 export const SearchProduct = ({ handleAddVenta }) => {
   const [nombre, setNombre] = useState("");
@@ -17,8 +17,8 @@ export const SearchProduct = ({ handleAddVenta }) => {
 
   return (
     <Form>
-      <Form.Row>
-        <Form.Group as={Col}>
+      <Row>
+        <Col md={6}>
           <Form.Label>Nombre de producto:</Form.Label>
           <Form.Control
             type="text"
@@ -26,9 +26,9 @@ export const SearchProduct = ({ handleAddVenta }) => {
             onChange={(e) => setNombre(e.target.value)}
             value={nombre}
           />
-        </Form.Group>
-        <Form.Group as={Col}>
-          <Form.Label>cantidad(m2/pz)</Form.Label>
+        </Col>
+        <Col md={3}>
+          <Form.Label>Cantidad(m2/pz).</Form.Label>
           <Form.Control
             type="number"
             min="1"
@@ -36,10 +36,9 @@ export const SearchProduct = ({ handleAddVenta }) => {
             onChange={(e) => setCantidad(e.target.value)}
             value={cantidad}
           />
-        </Form.Group>
-
-        <Form.Group as={Col}>
-          <Form.Label>precio</Form.Label>
+        </Col>
+        <Col md={3}>
+          <Form.Label>Total:</Form.Label>
           <Form.Control
             type="number"
             min="1"
@@ -47,12 +46,13 @@ export const SearchProduct = ({ handleAddVenta }) => {
             onChange={(e) => setTotal(e.target.value)}
             value={total}
           />
-        </Form.Group>
-      </Form.Row>
-
-      <Button as={Col} variant="primary" type="submit" onClick={handleSubmit}>
-        Agregar
-      </Button>
+        </Col>
+      </Row>
+      <Row className="mt-2">
+        <Button as={Col} variant="primary" type="submit" onClick={handleSubmit}>
+          Agregar
+        </Button>
+      </Row>
     </Form>
   );
 };

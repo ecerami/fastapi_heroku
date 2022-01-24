@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 
 export const FormPay = ({
   total,
@@ -20,32 +20,34 @@ export const FormPay = ({
 
   return (
     <Form>
-      <Form.Row>
-        <Form.Group as={Col}>
+      <Row>
+        <Col>
           <Form.Label>Total:</Form.Label>
           <Form.Control type="number" readOnly value={total} />
-        </Form.Group>
+        </Col>
 
-        <Form.Group as={Col}>
+        <Col>
           <Form.Label>Anticipo</Form.Label>
           <Form.Control
             type="number"
             onChange={handleAnticipo}
             value={anticipo}
           />
-        </Form.Group>
-        <Form.Group as={Col}>
+        </Col>
+        <Col>
           <Form.Label>Pendiente:</Form.Label>
           <Form.Control type="number" readOnly value={pendiente} />
-        </Form.Group>
-      </Form.Row>
+        </Col>
+      </Row>
 
-      <Button as={Col} variant="success" type="submit" onClick={handleSave}>
-        Cobrar
-      </Button>
-      <Button as={Col} variant="danger" type="submit" onClick={handleCancel}>
-        Cancelar
-      </Button>
+      <Row className="mt-2">
+        <Button as={Col} variant="success" type="submit" onClick={handleSave}>
+          Cobrar
+        </Button>
+        <Button as={Col} variant="danger" type="submit" onClick={handleCancel}>
+          Cancelar
+        </Button>
+      </Row>
     </Form>
   );
 };
