@@ -21,6 +21,7 @@ class Product(ProductBase):
 
 
 class ProductCreate(ProductBase):
+    # TODO: add validation, price need to by greather than 0
     pass
 
 
