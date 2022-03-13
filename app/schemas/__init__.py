@@ -1,1 +1,2 @@
-from .base import Compra, Note, NoteBase, NoteCreate, Product, Venta
+from .base import Compra, Note, NoteBase, NoteCreate
+from .product import Product, ProductCreate

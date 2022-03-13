@@ -4,12 +4,6 @@ from typing import List
 from pydantic import BaseModel
 
 
-class ProductBase(BaseModel):
-    nombre: str
-    categoria: str
-    precio: float
-
-
 class VentaBase(BaseModel):
     cantidad: float
     total: float
@@ -33,15 +27,6 @@ class CompraBase(BaseModel):
 class Compra(VentaBase):
     id: int
     product_id: int
-
-    class Config:
-        orm_mode = True
-
-
-class Product(ProductBase):
-    id: int
-    ventas: List[Venta] = []
-    compras: List[Compra] = []
 
     class Config:
         orm_mode = True
