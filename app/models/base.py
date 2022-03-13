@@ -1,7 +1,6 @@
+from app.database import Base
 from sqlalchemy import Column, Date, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-
-from .database import Base
 
 
 class Note(Base):
