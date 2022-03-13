@@ -20,9 +20,9 @@ class Product(ProductBase):
         orm_mode = True
 
 
-class ProductCreate(BaseModel):
+class ProductCreate(ProductBase):
     pass
 
 
-class ProductUpdate(BaseModel):
+class ProductUpdate(ProductBase):
     pass

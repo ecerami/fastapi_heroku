@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 router = APIRouter()
 
 
-@router.get('/note', response_model=List[schemas.Note])
+@router.get('/', response_model=List[schemas.Note])
 def get_notes(fecha: str, db: Session = Depends(get_db)):
     notes = crud.get_notes(fecha, db)
     if len(notes) < 1:
@@ -16,7 +16,7 @@ def get_notes(fecha: str, db: Session = Depends(get_db)):
     return notes[0]
 
 
-@router.post('/note', response_model=schemas.Note)
+@router.post('/', response_model=schemas.Note)
 def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
     """create note
 

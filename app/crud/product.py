@@ -13,7 +13,7 @@ class CrudProduct(CRUDBase[Product, ProductCreate, ProductUpdate]):
         query = select(self.model).where(self.model.nombre.like(f'%{name}%'))
         products = db.execute(query).all()
         result = list(zip(*products))
-        return result
+        return result[0]
 
 
 crudProduct = CrudProduct(Product)
