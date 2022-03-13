@@ -6,6 +6,7 @@ from app.api.api import api_router
 from . import models
 from .database import SessionLocal, engine
 
+# TODO: desactivar cuando se active alembic
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
